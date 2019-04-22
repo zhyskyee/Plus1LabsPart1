@@ -14,12 +14,11 @@ public class TimeService {
 
     @GetMapping("/api/time")
     public TimeModel getCurrentTime(){
-        Date toSend = new Date();
         TimeModel currentTime =new TimeModel();
-        currentTime.setHours(toSend.getHours());
-        currentTime.setMins(toSend.getMinutes());
-        currentTime.setSecs(toSend.getSeconds());
         GregorianCalendar c = new GregorianCalendar();
+        currentTime.setHours(c.get(Calendar.HOUR));
+        currentTime.setMins(c.get(Calendar.MINUTE));
+        currentTime.setSecs(c.get(Calendar.SECOND));
         currentTime.setMonth(c.get(Calendar.MONTH));
         currentTime.setDay(c.get(Calendar.DAY_OF_MONTH));
         currentTime.setYear(c.get(Calendar.YEAR));
